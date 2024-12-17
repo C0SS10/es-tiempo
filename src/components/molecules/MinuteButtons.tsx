@@ -9,18 +9,23 @@ export const MinuteButtons: React.FC<MinuteButtonsProps> = ({
   onAddMinutes,
 }) => {
   return (
-    <aside className="flex justify-center items-center flex-col gap-4">
+    <aside className="flex justify-center items-center gap-4">
       <Button
         onClick={() => onAddMinutes(4)}
         size="large"
-        animation="background"
-        className="flex items-center gap-2"
+        animation="underline"
+        className="text-8xl px-8"
       >
-        Agregar 4 minutos
+        4
       </Button>
       <Link to="/">
-        <Button variant="link" animation="underline" size="large">
-          Principal
+        <Button
+          variant="link"
+          animation="underline"
+          size="large"
+          className="text-8xl px-8"
+        >
+          8
         </Button>
       </Link>
     </aside>
