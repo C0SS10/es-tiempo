@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { formatTime } from "../../utils/TimeManager";
-import { TimeDisplay } from "../atoms/TimeDisplay";
+import { TimeDisplay } from "../molecules/TimeDisplay";
 import { MinuteButtons } from "../molecules/MinuteButtons";
 
 export const Countdown: React.FC = () => {
@@ -12,7 +11,7 @@ export const Countdown: React.FC = () => {
 
     if (isRunning) {
       interval = setInterval(() => {
-        setTime((previousTime) => Math.max(previousTime - 1, 0));
+        setTime((prevTime) => Math.max(prevTime - 1, 0));
       }, 1000);
     } else if (interval) {
       clearInterval(interval);
@@ -31,9 +30,19 @@ export const Countdown: React.FC = () => {
     }
   };
 
+  const days = Math.floor(time / (60 * 60 * 24));
+  const hours = Math.floor((time % (60 * 60 * 24)) / (60 * 60));
+  const minutes = Math.floor((time % (60 * 60)) / 60);
+  const seconds = Math.floor(time % 60);
+
   return (
-    <div className="text-center flex items-center justify-center gap-8">
-      <TimeDisplay time={time} formatTime={formatTime} />
+    <div className="text-center flex flex-col items-center justify-center gap-8">
+      <TimeDisplay
+        seconds={seconds}
+        minutes={minutes}
+        hours={hours}
+        days={days}
+      />
       <MinuteButtons onAddMinutes={addMinutes} />
     </div>
   );
