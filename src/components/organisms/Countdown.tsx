@@ -1,49 +1,58 @@
 import { useState, useEffect } from "react";
 import { TimeDisplay } from "../molecules/TimeDisplay";
 import { MinuteButtons } from "../molecules/MinuteButtons";
+import { formatTime } from "../../utils/TimeManager";
 
 export const Countdown: React.FC = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let interval = undefined;
-
     if (isRunning) {
-      interval = setInterval(() => {
-        setTime((prevTime) => Math.max(prevTime - 1, 0));
+      const interval = setInterval(() => {
+        setTime((previousTime) => Math.max(previousTime - 1, 0));
       }, 1000);
-    } else if (interval) {
-      clearInterval(interval);
-    }
 
-    return () => {
-      if (interval) clearInterval(interval);
-    };
+      return () => clearInterval(interval);
+    }
   }, [isRunning]);
 
   const addMinutes = (minutes: number) => {
     const newTime = time + minutes * 60;
-    if (newTime >= 0) {
-      setTime(newTime);
-      if (!isRunning) setIsRunning(true);
-    }
+
+    setTime(newTime);
   };
 
-  const days = Math.floor(time / (60 * 60 * 24));
-  const hours = Math.floor((time % (60 * 60 * 24)) / (60 * 60));
-  const minutes = Math.floor((time % (60 * 60)) / 60);
-  const seconds = Math.floor(time % 60);
+  const stopCountdown = () => {
+    setTime(0);
+    setIsRunning(false);
+  };
+
+  const pauseCountdown = () => {
+    setIsRunning(false);
+  };
+
+  const resumeCountdown = () => {
+    setIsRunning(true);
+  };
+
+  const { days, hours, minutes, seconds } = formatTime(time);
 
   return (
     <div className="text-center flex flex-col items-center justify-center gap-8">
+      <MinuteButtons
+        onAddMinutes={addMinutes}
+        onStopCountdown={stopCountdown}
+        onPauseCountdown={pauseCountdown}
+        onResumeCountdown={resumeCountdown}
+        isRunning={isRunning}
+      />
       <TimeDisplay
         seconds={seconds}
         minutes={minutes}
         hours={hours}
         days={days}
       />
-      <MinuteButtons onAddMinutes={addMinutes} />
     </div>
   );
 };
