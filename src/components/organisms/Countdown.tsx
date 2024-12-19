@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { TimeDisplay } from "../molecules/TimeDisplay";
-import { MinuteButtons } from "../molecules/MinuteButtons";
+import { CountdownButtons } from "../molecules/CoutdownButtons";
 import { formatTime } from "../../utils/TimeManager";
+import { Pause, Play, StopCircle } from "lucide-react";
 
 export const Countdown: React.FC = () => {
   const [time, setTime] = useState(0);
@@ -38,21 +39,48 @@ export const Countdown: React.FC = () => {
 
   const { days, hours, minutes, seconds } = formatTime(time);
 
+  const iconStyles = "h-16 w-16 transition-transform ease-in hover:scale-110";
+
+  const options = [
+    {
+      label: isRunning ? "Pausar" : "Reanudar",
+      onClick: isRunning ? pauseCountdown : resumeCountdown,
+      icon: isRunning ? (
+        <Pause className={iconStyles} />
+      ) : (
+        <Play className={iconStyles} />
+      ),
+    },
+    {
+      label: "Detener",
+      onClick: stopCountdown,
+      icon: <StopCircle className={iconStyles} />,
+    },
+  ];
+
+  const numberButtons = [
+    {
+      label: "4",
+      onClick: () => addMinutes(4),
+      className: "text-6xl px-6",
+    },
+    {
+      label: "1",
+      onClick: () => addMinutes(1),
+      className: "text-6xl px-6",
+    },
+  ];
+
   return (
-    <div className="text-center flex flex-col items-center justify-center gap-8">
-      <MinuteButtons
-        onAddMinutes={addMinutes}
-        onStopCountdown={stopCountdown}
-        onPauseCountdown={pauseCountdown}
-        onResumeCountdown={resumeCountdown}
-        isRunning={isRunning}
-      />
+    <div className="text-center flex items-center justify-center gap-12">
+      <CountdownButtons options={options} />
       <TimeDisplay
         seconds={seconds}
         minutes={minutes}
         hours={hours}
         days={days}
       />
+      <CountdownButtons options={numberButtons} />
     </div>
   );
 };
