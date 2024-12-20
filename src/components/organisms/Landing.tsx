@@ -16,8 +16,8 @@ export default function Landing() {
       <section className="flex flex-col items-center justify-center space-y-12 max-w-2xl text-center">
         <Logo />
         <Description>
-          TimeXtender es un temporizador de cuenta regresiva simple y
-          minimalista
+          <strong>Es Tiempo</strong> es un temporizador de cuenta regresiva
+          simple y minimalista
         </Description>
         <Link to="/timer">
           <Button size="medium" animation="background">
