@@ -60,24 +60,28 @@ export const Countdown: React.FC = () => {
 
   const numberButtons = [
     {
-      label: "4",
+      label: "4M",
       onClick: () => addMinutes(4),
       className: "text-6xl px-6",
+      title: "Agregar 4 minutos",
     },
     {
-      label: "1",
+      label: "1M",
       onClick: () => addMinutes(1),
       className: "text-6xl px-6",
+      title: "Agregar 1 minutos",
     },
     {
       label: "24H",
       onClick: () => addMinutes(1440),
       className: "text-6xl px-6",
+      title: "Agregar 1 hora",
     },
     {
       label: "1H",
       onClick: () => addMinutes(60),
       className: "text-6xl px-6",
+      title: "Agregar 1 hora",
     },
   ];
 
