@@ -5,7 +5,7 @@ interface CountdownButtonOption {
   onClick: () => void;
   icon?: React.ReactNode;
   title?: string;
-  className?: string;
+  buttonStyle?: string;
 }
 
 interface CountdownButtonsProps {
@@ -31,7 +31,7 @@ export const CountdownButtons: React.FC<CountdownButtonsProps> = ({
         <Button
           key={index}
           onClick={option.onClick}
-          className={option.className}
+          className={option.buttonStyle}
           size="large"
           title={option.title}
         >
