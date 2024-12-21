@@ -69,10 +69,20 @@ export const Countdown: React.FC = () => {
       onClick: () => addMinutes(1),
       className: "text-6xl px-6",
     },
+    {
+      label: "24H",
+      onClick: () => addMinutes(1440),
+      className: "text-6xl px-6",
+    },
+    {
+      label: "1H",
+      onClick: () => addMinutes(60),
+      className: "text-6xl px-6",
+    },
   ];
 
   return (
-    <div className="text-center flex items-center justify-center gap-12">
+    <div className="text-center flex flex-col items-center justify-center gap-12">
       <CountdownButtons options={options} />
       <TimeDisplay
         seconds={seconds}

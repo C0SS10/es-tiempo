@@ -22,7 +22,7 @@ export const Date: React.FC<DateProps> = ({
         className
       )}
     >
-      <strong className="-skew-x-3 text-center text-4xl md:text-6xl font-bold">
+      <strong className="-skew-x-3 text-center text-6xl md:text-7xl font-bold">
         {formattedValue}
       </strong>
       <span className="text-lg md:text-xl uppercase">{dateType}</span>

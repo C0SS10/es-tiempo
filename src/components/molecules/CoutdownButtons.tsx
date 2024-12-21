@@ -15,7 +15,7 @@ export const CountdownButtons: React.FC<CountdownButtonsProps> = ({
   options,
 }) => {
   return (
-    <aside className="flex flex-col justify-center items-center gap-4">
+    <aside className="grid grid-cols-2 grid-rows-1 xl:grid-cols-2 xl:grid-rows-1 justify-center items-center gap-4">
       {options.map((option, index) => (
         <Button
           key={index}
