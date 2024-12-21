@@ -7,7 +7,6 @@ import { Play, Github } from "lucide-react";
 export default function Landing() {
   return (
     <div className="flex flex-col items-center px-4 sm:px-8 md:px-12 lg:px-16">
-      {/* GitHub Link */}
       <Link to="https://www.GitHub.com/C0SS10" target="_blank">
         <Button
           variant="ghost"
@@ -18,7 +17,6 @@ export default function Landing() {
         </Button>
       </Link>
 
-      {/* Main Section */}
       <section className="flex flex-col items-center justify-center text-center space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16 max-w-lg md:max-w-xl lg:max-w-2xl">
         <Logo />
         <Description className="text-lg sm:text-xl md:text-2xl lg:text-4xl">
