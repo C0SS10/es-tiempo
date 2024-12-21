@@ -7,6 +7,7 @@ interface ButtonProps {
   animation?: "scale" | "underline" | "background" | "shadow";
   size?: "small" | "medium" | "large";
   variant?: "destructive" | "ghost" | "link" | "default";
+  title?: string;
   onClick?: () => void;
 }
 
@@ -16,6 +17,7 @@ export const Button = ({
   variant = "default",
   animation = "background",
   className,
+  title,
   onClick,
 }: ButtonProps) => {
   const sizes = {
@@ -50,6 +52,7 @@ export const Button = ({
         "shadow-[4px_4px_16px_#5d4c68,-4px_-4px_16px_#7d668c] text-secondary-200 rounded-lg font-bold"
       )}
       onClick={onClick}
+      title={title}
     >
       {children}
     </button>
