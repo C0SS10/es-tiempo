@@ -1,42 +1,18 @@
-import { useState, useEffect } from "react";
 import { TimeDisplay } from "../molecules/TimeDisplay";
 import { CountdownButtons } from "../molecules/CoutdownButtons";
 import { formatTime } from "../../utils/TimeManager";
 import { Pause, Play, StopCircle } from "lucide-react";
+import { useCountdown } from "../../hooks/useCountdown";
 
 export const Countdown: React.FC = () => {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-
-  useEffect(() => {
-    if (isRunning) {
-      const interval = setInterval(() => {
-        setTime((previousTime) => Math.max(previousTime - 1, 0));
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [isRunning]);
-
-  const addMinutes = (minutes: number) => {
-    const newTime = time + minutes * 60;
-
-    setTime(newTime);
-  };
-
-  const stopCountdown = () => {
-    setTime(0);
-    setIsRunning(false);
-  };
-
-  const pauseCountdown = () => {
-    setIsRunning(false);
-  };
-
-  const resumeCountdown = () => {
-    setIsRunning(true);
-  };
-
+  const {
+    time,
+    isRunning,
+    addMinutes,
+    stopCountdown,
+    pauseCountdown,
+    resumeCountdown,
+  } = useCountdown();
   const { days, hours, minutes, seconds } = formatTime(time);
 
   const iconStyles = "h-16 w-16 transition-transform ease-in hover:scale-110";
