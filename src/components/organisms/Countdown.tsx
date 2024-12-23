@@ -16,6 +16,7 @@ export const Countdown: React.FC = () => {
   const { days, hours, minutes, seconds } = formatTime(time);
 
   const iconStyles = "h-16 w-16 transition-transform ease-in hover:scale-110";
+  const buttonStyle = "text-6xl transition-transform ease-in hover:scale-105";
 
   const options = [
     {
@@ -38,25 +39,25 @@ export const Countdown: React.FC = () => {
     {
       label: "30S",
       onClick: () => addMinutes(0.5),
-      buttonStyle: "text-6xl transition-transform ease-in hover:scale-105",
+      buttonStyle: buttonStyle,
       title: "Agregar 30 segundos",
     },
     {
       label: "1M",
       onClick: () => addMinutes(1),
-      buttonStyle: "text-6xl transition-transform ease-in hover:scale-105",
+      buttonStyle: buttonStyle,
       title: "Agregar 1 minutos",
     },
     {
       label: "1D",
       onClick: () => addMinutes(1440),
-      buttonStyle: "text-6xl transition-transform ease-in hover:scale-105",
+      buttonStyle: buttonStyle,
       title: "Agregar 1 hora",
     },
     {
       label: "1H",
       onClick: () => addMinutes(60),
-      buttonStyle: "text-6xl transition-transform ease-in hover:scale-105",
+      buttonStyle: buttonStyle,
       title: "Agregar 1 hora",
     },
   ];
