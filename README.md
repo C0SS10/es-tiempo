@@ -13,5 +13,9 @@ This is a small, interactive application that allows you to manage a countdown t
 - 🎨 **Tailwind CSS**: Utility-first styling for sleek and responsive design.
 - 🔷 **TypeScript**: Type-safe and reliable JavaScript.
 
+### Testing 🧑‍🔬
+- 🧪 **Vitest**: Testing framework
+- 🧪 **React Testing Library**: Library for testing react components
+
 # License 📜
 This project is licensed under the MIT License. See the LICENSE file for more details.
