@@ -49,14 +49,14 @@ export const Countdown: React.FC = () => {
       title: "Agregar 1 minutos",
     },
     {
-      label: "1D",
-      onClick: () => addMinutes(1440),
+      label: "1H",
+      onClick: () => addMinutes(60),
       buttonStyle: buttonStyle,
       title: "Agregar 1 hora",
     },
     {
-      label: "1H",
-      onClick: () => addMinutes(60),
+      label: "1D",
+      onClick: () => addMinutes(1440),
       buttonStyle: buttonStyle,
       title: "Agregar 1 hora",
     },
